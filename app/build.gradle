@@ -1,0 +1,81 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.example.weekendtimer'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.weekendtimer"
+        minSdk 26
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+
+    // Kotlin extensions for Android support library
+    implementation 'androidx.core:core-ktx:1.10.1'
+    // Support for older Android versions and Material Design components
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    // Material Design components
+    implementation 'com.google.android.material:material:1.9.0'
+    // Layout manager for complex UI designs
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    // LiveData lifecycle-aware components
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+    // ViewModel lifecycle-aware components
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
+    // Navigation components for fragments
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.6.0'
+    // Navigation components for UI elements
+    implementation 'androidx.navigation:navigation-ui-ktx:2.6.0'
+    // Kotlin serialization for JSON parsing
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0'
+    // Retrofit converter for Kotlin serialization
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0"
+    // HTTP client for making network requests
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    // Dependency injection framework for Android
+    implementation "com.google.dagger:hilt-android:2.44"
+    // Coil for image loading
+    implementation "io.coil-kt:coil:2.2.2"
+    // Annotation processor for Dagger/Hilt
+    kapt "com.google.dagger:hilt-compiler:2.44"
+    // Unit testing framework
+    testImplementation 'junit:junit:4.13.2'
+    // AndroidJUnitRunner and JUnit rules
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    // UI testing framework
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+}
