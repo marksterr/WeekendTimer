@@ -1,5 +1,4 @@
 package com.example.weekendtimer.data.local
-
 data class Category(
     val idCategory: String,
     val strCategory: String,
