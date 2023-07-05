@@ -3,6 +3,8 @@ package com.example.weekendtimer.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 // Declaring the HomeViewModel class. It's a subclass of the ViewModel class.
 class HomeViewModel : ViewModel() {
