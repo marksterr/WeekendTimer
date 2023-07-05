@@ -7,4 +7,5 @@
     <string name="start_timer">Start Timer</string>
     <string name="title_categories">Categories</string>
     <string name="category">Category</string>
+    <string name="meal">Meal</string>
 </resources>

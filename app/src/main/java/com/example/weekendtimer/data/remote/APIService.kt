@@ -2,6 +2,7 @@ package com.example.weekendtimer.data.remote
 
 import com.example.weekendtimer.data.remote.dtos.category.CategoryResponse
 import com.example.weekendtimer.data.remote.dtos.meal.MealResponse
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -19,16 +20,13 @@ interface APIService {
     @GET(CATEGORY_ENDPOINT)
     suspend fun getAllMealCategories(): CategoryResponse
 
-    // This function is similar to the one above, but it retrieves a specific meal.
-    // The '@Query' annotation is used to specify query parameters in the URL.
-    // In this case, the parameter is a 'mealName' of type String, and it will return a 'MealResponse'.
-    @GET(MEAL_ENDPOINT)
-    suspend fun getMeal(@Query("s") mealName: String): MealResponse
+    @GET(MEAL_IN_CATEGORY_ENDPOINT)
+    suspend fun getMealFromCategory(@Query("c") categoryName: String): MealResponse
 
     // This is a 'companion object'. In Kotlin, it is a way of creating 'static' members of the class.
     // These constants will be accessible from anywhere the APIService is used.
     companion object {
         private const val CATEGORY_ENDPOINT = "categories.php"
-        private const val MEAL_ENDPOINT = "search.php"
+        private const val MEAL_IN_CATEGORY_ENDPOINT = "filter.php"
     }
 }

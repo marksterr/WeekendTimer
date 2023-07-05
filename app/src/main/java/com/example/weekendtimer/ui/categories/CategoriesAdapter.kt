@@ -8,7 +8,7 @@ import com.example.weekendtimer.data.local.Category
 import com.example.weekendtimer.databinding.ItemCategoryBinding
 
 // This class is a custom adapter for a RecyclerView that displays Category objects.
-class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
+class CategoriesAdapter(private val onCategoryClick: (Category) -> Unit) : RecyclerView.Adapter<CategoriesAdapter.CategoryViewHolder>() {
 
     // This is a list of Category objects that this adapter displays.
     private var categoryList: List<Category> = emptyList()
@@ -35,7 +35,11 @@ class CategoriesAdapter : RecyclerView.Adapter<CategoriesAdapter.CategoryViewHol
     // This method is called to display the data for one list item at the specified position.
     // This method binds the Category data to the ViewHolder.
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        holder.displayCategory(categoryList[position]) // Call the displayCategory method with the current Category.
+        val currentCategory = categoryList[position]
+        holder.displayCategory(currentCategory)
+        holder.itemView.setOnClickListener {
+            onCategoryClick(currentCategory)
+        }
     }
 
     // This method returns the size of the data set (the number of items in the Category list).

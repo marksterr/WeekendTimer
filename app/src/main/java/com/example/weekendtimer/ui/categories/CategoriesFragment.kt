@@ -5,11 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.weekendtimer.R
 import com.example.weekendtimer.databinding.FragmentCategoriesBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,7 +38,13 @@ class CategoriesFragment : Fragment() {
         return FragmentCategoriesBinding.inflate(inflater, container, false).apply {
             _binding = this
             // Create an instance of CategoriesAdapter
-            val adapter = CategoriesAdapter()
+            val adapter = CategoriesAdapter { category ->
+                val args : Bundle = bundleOf("category" to category.strCategory)
+                findNavController().navigate(
+                    R.id.action_navigation_categories_to_mealsFragment,
+                    args
+                )
+            }
             // Observes the categories LiveData in the ViewModel. When the categories data changes, the adapter updates the RecyclerView's data.
             viewModel.categories.observe(
                 viewLifecycleOwner,
