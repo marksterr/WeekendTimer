@@ -24,7 +24,7 @@ class CategoriesViewModel @Inject constructor(private val repo: MealRepo) : View
     }
 
     // Asynchronous method to fetch categories from repository using coroutine launched from viewModelScope.
-    private fun getCategories() = viewModelScope.launch {
+    fun getCategories() = viewModelScope.launch {
         _categories.value = repo.getMealCategories() // Update _categories value with data fetched from repository.
     }
 }

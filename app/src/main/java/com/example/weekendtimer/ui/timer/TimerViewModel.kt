@@ -74,7 +74,7 @@ class TimerViewModel @Inject constructor() : ViewModel() {
     }
 
     // When the ViewModel is cleared (usually when the associated view is destroyed), cancel the countdown job to avoid doing work for a view that no longer exists.
-    override fun onCleared() {
+    public override fun onCleared() {
         super.onCleared()
         countdownJob?.cancel() // Cancel countdown job when the ViewModel is cleared
     }
